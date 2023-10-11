@@ -20,5 +20,6 @@ __test__/*
 src
 
 # Development Files
-development/*
+development
+development/index.tsx
 node_modules
