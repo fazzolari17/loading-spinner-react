@@ -1,62 +1,28 @@
 import React from 'react';
-import { BaseProps } from '../type';
 import { convertCssSizeToNumber } from '../helperFunctions';
+import { 
+  DoubleSpinnerProps, 
+  DoubleStyles, 
+  DEFAULT_ARIA_ATTRIBUTES, 
+  DOUBLE_DEFAULT_VALUES 
+} from '../type';
 
-export interface Styles {
-  spinContainer: React.CSSProperties;
-  spin: React.CSSProperties;
-  loader2: React.CSSProperties;
-  loader3: React.CSSProperties;
-  loader4: React.CSSProperties;
-  text: React.CSSProperties;
-  textAnimation: React.CSSProperties;
-}
 
-interface DoubleSpinnerProps extends Omit<BaseProps, 'color'> {
-  color?: string[] | undefined;
-  text?: string;
-  textColor?: string;
-  textAnimation?: boolean;
-  displayText?: boolean;
-  fontFamily?: string;
-  fontSize?: string;
-}
-
-export const DEFAULT_WAI_ARIA_ATTRIBUTE = {
-  'aria-busy': true,
-  role: 'status',
-};
-
-export const DEFAULT_VALUES = {
-  visible: true,
-  size: 150,
-  color: ['#0D4B9F', '#E0EDFF', '#005CDC', '#94B6E5'],
-  text: 'LOADING...',
-  textColor: '#D6E3F6',
-  textAnimation: true,
-  displayText: true,
-  fontFamily: 'inherit',
-  fontSize: '15px',
-  spinnerSize: '3px',
-  ariaLabel: 'double-spinner-loader',
-  className: '',
-  style: {}
-};
 
 const Double = ({
-  visible = DEFAULT_VALUES.visible,
-  size = DEFAULT_VALUES.size,
-  color = DEFAULT_VALUES.color,
-  text = DEFAULT_VALUES.text,
-  textColor = DEFAULT_VALUES.textColor,
-  textAnimation = DEFAULT_VALUES.textAnimation,
-  displayText = DEFAULT_VALUES.displayText,
-  fontFamily = DEFAULT_VALUES.fontFamily,
-  fontSize = DEFAULT_VALUES.fontSize,
-  spinnerSize = DEFAULT_VALUES.spinnerSize,
-  ariaLabel = DEFAULT_VALUES.ariaLabel,
-  className = DEFAULT_VALUES.className,
-  style = DEFAULT_VALUES.style,
+  visible = DOUBLE_DEFAULT_VALUES.visible,
+  size = DOUBLE_DEFAULT_VALUES.size,
+  color = DOUBLE_DEFAULT_VALUES.color,
+  text = DOUBLE_DEFAULT_VALUES.text,
+  textColor = DOUBLE_DEFAULT_VALUES.textColor,
+  textAnimation = DOUBLE_DEFAULT_VALUES.textAnimation,
+  displayText = DOUBLE_DEFAULT_VALUES.displayText,
+  fontFamily = DOUBLE_DEFAULT_VALUES.fontFamily,
+  fontSize = DOUBLE_DEFAULT_VALUES.fontSize,
+  spinnerSize = DOUBLE_DEFAULT_VALUES.spinnerSize,
+  ariaLabel = DOUBLE_DEFAULT_VALUES.ariaLabel,
+  className = DOUBLE_DEFAULT_VALUES.className,
+  style = DOUBLE_DEFAULT_VALUES.style,
   ...rest
 }: DoubleSpinnerProps) => {
   let number; 
@@ -98,7 +64,7 @@ const Double = ({
       }
     }`;
 
-  const styles: Styles = {
+  const styles: DoubleStyles = {
     spinContainer: {
       display: 'flex',
       alignItems: 'center',
@@ -163,7 +129,7 @@ const Double = ({
         style={{ ...styles.spinContainer, ...style }}
         aria-label={ariaLabel}
         className={className}
-        {...DEFAULT_WAI_ARIA_ATTRIBUTE}
+        {...DEFAULT_ARIA_ATTRIBUTES}
         {...rest}
       >
         <div style={styles.spin}></div>

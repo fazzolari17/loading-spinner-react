@@ -1,33 +1,21 @@
 import React from 'react';
-import { BaseProps, DEFAULT_ARIA_ATTRIBUTES } from '../type';
+import { 
+  SpinningCoinProps, 
+  SpinningCoinStyles, 
+  SPINNINGCOIN_DEFAULT_VALUES, 
+  DEFAULT_ARIA_ATTRIBUTES 
+} from '../type';
 
-export interface SpinningCoinProps extends Omit<BaseProps, 'spinnerSize'> {
-  spinnerSpeed?: number;
-  styles?: React.CSSProperties;
-  className?: string;
-  ariaLabel?: string;
-  spinDirection?: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse';
-}
 
-export const DEFAULT_VALUES = {
-  visible: true,
-  size: '30px',
-  color: '#1976d2',
-  spinnerSize: '4px',
-  spinnerSpeed: 1,
-  className: '',
-  ariaLabel: 'spinning-coin-loader',
-  spinDirection: 'normal',
-};
 
 const SpinningCoin = ({
-  visible = DEFAULT_VALUES.visible,
-  size = DEFAULT_VALUES.size,
-  color = DEFAULT_VALUES.color,
-  spinnerSpeed = DEFAULT_VALUES.spinnerSpeed,
-  spinDirection = DEFAULT_VALUES.spinDirection as SpinningCoinProps['spinDirection'],
-  className = DEFAULT_VALUES.className,
-  ariaLabel = DEFAULT_VALUES.ariaLabel,
+  visible = SPINNINGCOIN_DEFAULT_VALUES.visible,
+  size = SPINNINGCOIN_DEFAULT_VALUES.size,
+  color = SPINNINGCOIN_DEFAULT_VALUES.color,
+  spinnerSpeed = SPINNINGCOIN_DEFAULT_VALUES.spinnerSpeed,
+  spinDirection = SPINNINGCOIN_DEFAULT_VALUES.spinDirection as SpinningCoinProps['spinDirection'],
+  className = SPINNINGCOIN_DEFAULT_VALUES.className,
+  ariaLabel = SPINNINGCOIN_DEFAULT_VALUES.ariaLabel,
   styles,
   ...rest
 }: SpinningCoinProps) => {
@@ -50,12 +38,8 @@ const SpinningCoin = ({
       }
     }
   `;
-  interface Style {
-    ldsCircle: React.CSSProperties;
-    ldsCircleDiv: React.CSSProperties;
-  }
 
-  const style: Style = {
+  const style: SpinningCoinStyles = {
     ldsCircle: {
       display: 'flex',
       alignItems: 'center',

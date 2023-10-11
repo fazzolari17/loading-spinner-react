@@ -1,10 +1,13 @@
-import React from 'react';
-import { SpinningCoin } from '../../src';
-import { render } from '@testing-library/react';
-import { DEFAULT_VALUES } from '../../src/loaders/SpinningCoin';
-import { DEFAULT_ARIA_ATTRIBUTES } from '../../src/type';
 import '@testing-library/jest-dom/';
 import '@testing-library/jest-dom/jest-globals';
+
+import React from 'react';
+import { render } from '@testing-library/react';
+import { SpinningCoin } from '../../src';
+import { 
+  SPINNINGCOIN_DEFAULT_VALUES,
+  DEFAULT_ARIA_ATTRIBUTES, 
+} from '../../src/type';
 
 // Global variables
 const speed = [2.2, 2.4, 2.6];
@@ -31,20 +34,20 @@ describe('Spinning Coin Loader', () => {
     );
     expect(loaderContainer).toHaveAttribute(
       'aria-label',
-      DEFAULT_VALUES.ariaLabel
+      SPINNINGCOIN_DEFAULT_VALUES.ariaLabel
     );
 
     // Default class
     expect(loaderContainer).not.toHaveClass('');
 
     // Correct default styles are applied
-    expect(loader).toHaveStyle(`width: ${DEFAULT_VALUES.size}`);
-    expect(loader).toHaveStyle(`height: ${DEFAULT_VALUES.size}`);
+    expect(loader).toHaveStyle(`width: ${SPINNINGCOIN_DEFAULT_VALUES.size}`);
+    expect(loader).toHaveStyle(`height: ${SPINNINGCOIN_DEFAULT_VALUES.size}`);
 
     expect(loader).toHaveStyle(
       `animation: spin-coin ${
-        speed[DEFAULT_VALUES.spinnerSpeed]
-      }s cubic-bezier(0, 0.2, 0.8, 1) infinite ${DEFAULT_VALUES.spinDirection}`
+        speed[SPINNINGCOIN_DEFAULT_VALUES.spinnerSpeed]
+      }s cubic-bezier(0, 0.2, 0.8, 1) infinite ${SPINNINGCOIN_DEFAULT_VALUES.spinDirection}`
     );
   });
   it('expect the props to be applied when passed to the component', () => {
@@ -75,7 +78,7 @@ describe('Spinning Coin Loader', () => {
     expect(loaderContainer).toHaveAttribute('aria-label', 'custom-aria-label');
     expect(loaderContainer).not.toHaveAttribute(
       'aria-label',
-      DEFAULT_VALUES.ariaLabel
+      SPINNINGCOIN_DEFAULT_VALUES.ariaLabel
     );
     expect(loaderContainer).toHaveAttribute(
       'aria-description',

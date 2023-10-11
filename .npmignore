@@ -10,15 +10,15 @@ jest.config.js
 webpack.config.js
 .babelrc
 .prettierignore
-.prettier.json
+.prettierrc.json
 
 
 # Test
-test
+__test__/*
 
 # Source Code 
 src
 
 # Development Files
-development
+development/*
 node_modules

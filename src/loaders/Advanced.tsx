@@ -1,64 +1,33 @@
 import React from 'react';
-import { DEFAULT_ARIA_ATTRIBUTES, BaseProps, DEFAULT_SIZE, DEFAULT_COLOR } from '../type';
+import { 
+  AdvancedSpinnerProps,
+  AdvancedStyles,
+  DEFAULT_ARIA_ATTRIBUTES, 
+  ADVANCED_DEFAULT_VALUES 
+} from '../type';
 
-interface Styles {
-  ldsRing: React.CSSProperties;
-  ldsRingDiv: React.CSSProperties;
-  textAnimation: React.CSSProperties;
-  text: React.CSSProperties;
-}
 
-export interface AdvancedSpinnerProps extends BaseProps {
-  spinnerSize?: string;
-  speed?: number;
-  styles?: React.CSSProperties;
-  className?: string;
-  ariaLabel?: string;
-  spinDirection?: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse';
-  text?: string;
-  textColor?: string;
-  textAnimation?: boolean;
-  displayText?: boolean;
-  fontFamily?: string;
-  fontSize?: string;
-}
-
-export const DEFAULT_VALUES = {
-  visible: true,
-  size: DEFAULT_SIZE,
-  color: DEFAULT_COLOR,
-  text: 'LOADING...',
-  textColor: '#D6E3F6',
-  textAnimation: true,
-  displayText: false,
-  fontFamily: 'inherit',
-  fontSize: '15px',
-  spinnerSize: '4px',
-  speed: 1.2,
-  className: '',
-  ariaLabel: 'advanced-loading-spinner',
-  spinDirection: 'normal',
-};
 
 const Advanced = ({
-  visible = DEFAULT_VALUES.visible,
-  size = DEFAULT_VALUES.size,
-  color = DEFAULT_VALUES.color,
-  text = DEFAULT_VALUES.text,
-  textColor = DEFAULT_VALUES.textColor,
-  textAnimation = DEFAULT_VALUES.textAnimation,
-  displayText = DEFAULT_VALUES.displayText,
-  fontFamily = DEFAULT_VALUES.fontFamily,
-  fontSize = DEFAULT_VALUES.fontSize,
-  speed = DEFAULT_VALUES.speed,
-  spinnerSize = DEFAULT_VALUES.spinnerSize,
-  spinDirection = DEFAULT_VALUES.spinDirection as AdvancedSpinnerProps['spinDirection'],
+  visible = ADVANCED_DEFAULT_VALUES.visible,
+  size = ADVANCED_DEFAULT_VALUES.size,
+  color = ADVANCED_DEFAULT_VALUES.color,
+  text = ADVANCED_DEFAULT_VALUES.text,
+  textColor = ADVANCED_DEFAULT_VALUES.textColor,
+  textAnimation = ADVANCED_DEFAULT_VALUES.textAnimation,
+  displayText = ADVANCED_DEFAULT_VALUES.displayText,
+  fontFamily = ADVANCED_DEFAULT_VALUES.fontFamily,
+  fontSize = ADVANCED_DEFAULT_VALUES.fontSize,
+  speed = ADVANCED_DEFAULT_VALUES.speed,
+  spinnerSize = ADVANCED_DEFAULT_VALUES.spinnerSize,
+  spinDirection = ADVANCED_DEFAULT_VALUES.spinDirection as AdvancedSpinnerProps['spinDirection'],
   style,
-  className = DEFAULT_VALUES.className,
-  ariaLabel = DEFAULT_VALUES.ariaLabel,
+  className = ADVANCED_DEFAULT_VALUES.className,
+  ariaLabel = ADVANCED_DEFAULT_VALUES.ariaLabel,
   ...rest
 }: AdvancedSpinnerProps ) => {
 
+  
   if(typeof size === 'number') {
     size = `${size}px`
   }
@@ -82,7 +51,7 @@ const Advanced = ({
   }
   `;
 
-  const styles: Styles = {
+  const styles: AdvancedStyles = {
     ldsRing: {
       display: 'flex',
       justifyContent: 'center',
@@ -142,8 +111,8 @@ const Advanced = ({
         {...rest}
       >
         <div style={{ ...styles.ldsRingDiv }}></div>
-        <span style={{ ...styles.text, ...flashingText, zIndex: 10 }}>{innerText}</span>
         {spinDirectionDivArrangement}
+        <span style={{ ...styles.text, ...flashingText }}>{innerText}</span>
       </div>
     </>
   );

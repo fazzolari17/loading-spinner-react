@@ -1,53 +1,26 @@
 import React from 'react';
 import {
+  SimpleLoaderProps,
+  SimpleLoaderStyles,
   DEFAULT_ARIA_ATTRIBUTES,
-  DEFAULT_COLOR,
-  DEFAULT_SIZE,
-  BaseProps,
+  SIMPLE_DEFAULT_VALUES
 } from '../type';
 
-export interface SimpleLoaderProps extends BaseProps {
-  spinDirection?: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse' | '';
-  easingFunction?: 'ease-in-out' | 'linear' | 'ease' | string;
-  spinSpeed?: number;
-  spinDuration?: 'infinite' | string;
-  smallSpinArc?: boolean;
-}
 
-export interface Styles {
-  loaderContainer: React.CSSProperties;
-  customSpinner: React.CSSProperties;
-  smallSpinArcSize: React.CSSProperties;
-  largeSpinArcSize: React.CSSProperties;
-}
-
-export const DEFAULT_VALUES = {
-  visible: true,
-  color: DEFAULT_COLOR,
-  size: DEFAULT_SIZE,
-  className: '',
-  ariaLabel: 'simple-loading-spinner',
-  spinDirection: 'normal',
-  easingFunction: 'linear',
-  spinSpeed: 1,
-  spinDuration: 'infinite',
-  spinnerSize: '4px',
-  smallSpinArc: true,
-};
 
 const Simple = ({
-  visible = DEFAULT_VALUES.visible,
-  size = DEFAULT_VALUES.size,
-  color = DEFAULT_VALUES.color,
-  spinDirection = DEFAULT_VALUES.spinDirection as SimpleLoaderProps['spinDirection'],
-  spinSpeed = DEFAULT_VALUES.spinSpeed,
-  spinDuration = DEFAULT_VALUES.spinDuration,
-  spinnerSize = DEFAULT_VALUES.spinnerSize,
-  smallSpinArc = DEFAULT_VALUES.smallSpinArc,
-  easingFunction = DEFAULT_VALUES.easingFunction,
+  visible = SIMPLE_DEFAULT_VALUES.visible,
+  size = SIMPLE_DEFAULT_VALUES.size,
+  color = SIMPLE_DEFAULT_VALUES.color,
+  spinDirection = SIMPLE_DEFAULT_VALUES.spinDirection as SimpleLoaderProps['spinDirection'],
+  spinSpeed = SIMPLE_DEFAULT_VALUES.spinSpeed,
+  spinDuration = SIMPLE_DEFAULT_VALUES.spinDuration,
+  spinnerSize = SIMPLE_DEFAULT_VALUES.spinnerSize,
+  smallSpinArc = SIMPLE_DEFAULT_VALUES.smallSpinArc,
+  easingFunction = SIMPLE_DEFAULT_VALUES.easingFunction,
   style = {},
-  className = DEFAULT_VALUES.className,
-  ariaLabel = DEFAULT_VALUES.ariaLabel,
+  className = SIMPLE_DEFAULT_VALUES.className,
+  ariaLabel = SIMPLE_DEFAULT_VALUES.ariaLabel,
   ...rest
 }: SimpleLoaderProps): React.JSX.Element | null => {
   const spinSpeedArray = [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
@@ -59,7 +32,7 @@ const Simple = ({
     }
   `;
 
-  const styles: Styles = {
+  const styles: SimpleLoaderStyles = {
     loaderContainer: {
       display: 'flex',
       justifyContent: 'center',

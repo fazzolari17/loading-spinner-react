@@ -1,15 +1,15 @@
-import React from 'react';
-import { Advanced } from '../../src';
-import { render } from '@testing-library/react';
-import { DEFAULT_VALUES } from '../../src/loaders/Advanced';
-import { DEFAULT_ARIA_ATTRIBUTES } from '../../src/type';
 import '@testing-library/jest-dom/';
 import '@testing-library/jest-dom/jest-globals';
+
+import React from 'react';
+import { render } from '@testing-library/react';
+import { Advanced } from '../../src';
+import { ADVANCED_DEFAULT_VALUES, DEFAULT_ARIA_ATTRIBUTES } from '../../src/type';
 
 describe('Advanced Loader', () => {
   it('should render to screen with default props', () => {
     const { getByLabelText } = render(<Advanced />);
-    const loaderContainer = getByLabelText(DEFAULT_VALUES.ariaLabel);
+    const loaderContainer = getByLabelText(ADVANCED_DEFAULT_VALUES.ariaLabel);
     const loader = loaderContainer.firstChild;
 
 
@@ -29,28 +29,28 @@ describe('Advanced Loader', () => {
     );
     expect(loaderContainer).toHaveAttribute(
       'aria-label',
-      DEFAULT_VALUES.ariaLabel
+      ADVANCED_DEFAULT_VALUES.ariaLabel
     );
 
     // Default class
     expect(loaderContainer).not.toHaveClass('');
 
     // Correct default styles are applied
-    expect(loaderContainer).toHaveStyle(`width: ${DEFAULT_VALUES.size}`);
-    expect(loaderContainer).toHaveStyle(`height: ${DEFAULT_VALUES.size}`);
-    expect(loader).toHaveStyle(`width: ${DEFAULT_VALUES.size}`);
-    expect(loader).toHaveStyle(`height: ${DEFAULT_VALUES.size}`);
+    expect(loaderContainer).toHaveStyle(`width: ${ADVANCED_DEFAULT_VALUES.size}`);
+    expect(loaderContainer).toHaveStyle(`height: ${ADVANCED_DEFAULT_VALUES.size}`);
+    expect(loader).toHaveStyle(`width: ${ADVANCED_DEFAULT_VALUES.size}`);
+    expect(loader).toHaveStyle(`height: ${ADVANCED_DEFAULT_VALUES.size}`);
 
     expect(loader).toHaveStyle(
-      `border: ${DEFAULT_VALUES.spinnerSize} solid ${DEFAULT_VALUES.color}`
+      `border: ${ADVANCED_DEFAULT_VALUES.spinnerSize} solid ${ADVANCED_DEFAULT_VALUES.color}`
     );
     expect(loader).toHaveStyle(
       `animation: lds-ring ${
-        DEFAULT_VALUES.speed
-      }s cubic-bezier(0.5, 0, 0.5, 1) infinite ${DEFAULT_VALUES.spinDirection}`
+        ADVANCED_DEFAULT_VALUES.speed
+      }s cubic-bezier(0.5, 0, 0.5, 1) infinite ${ADVANCED_DEFAULT_VALUES.spinDirection}`
     );
     expect(loader).toHaveStyle(
-      `borderColor: ${DEFAULT_VALUES.color} transparent transparent transparent`
+      `borderColor: ${ADVANCED_DEFAULT_VALUES.color} transparent transparent transparent`
     );
   });
   it('expect the props to be applied when passed to the component', () => {
@@ -63,9 +63,11 @@ describe('Advanced Loader', () => {
       speed: 1,
       ariaLabel: 'custom-aria-label',
       className: 'custom-class',
-      ariaDescription: 'test-additional-attributes-are-passed'
+      ariaDescription: 'test-additional-attributes-are-passed',
+      displayText: true,
+      text: 'custom-text'
     }
-    const { getByLabelText } = render(
+    const { getByLabelText, getByText } = render(
       <Advanced
         size={TEST_VALUES.size}
         color={TEST_VALUES.color}
@@ -75,15 +77,20 @@ describe('Advanced Loader', () => {
         ariaLabel={TEST_VALUES.ariaLabel}
         className={TEST_VALUES.className}
         aria-description={TEST_VALUES.ariaDescription}
+        displayText={TEST_VALUES.displayText}
+        text={TEST_VALUES.text}
       />
     );
     const loaderContainer = getByLabelText(TEST_VALUES.ariaLabel);
     const loader = loaderContainer.firstChild;
+    const text = getByText(TEST_VALUES.text);
+    
+    expect(text).toBeInTheDocument();
 
     expect(loaderContainer).toHaveAttribute('aria-label', TEST_VALUES.ariaLabel);
     expect(loaderContainer).not.toHaveAttribute(
       'aria-label',
-      DEFAULT_VALUES.ariaLabel
+      ADVANCED_DEFAULT_VALUES.ariaLabel
     );
     expect(loaderContainer).toHaveAttribute('aria-description', TEST_VALUES.ariaDescription)
 

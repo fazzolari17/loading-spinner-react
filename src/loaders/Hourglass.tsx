@@ -1,44 +1,22 @@
 import React from 'react';
 import {
-  BaseProps,
+  HourglassProps,
+  HourglassStyles,
+  HOURGLASS_DEFAULT_VALUES,
   DEFAULT_ARIA_ATTRIBUTES,
-  DEFAULT_COLOR,
-  DEFAULT_SIZE,
 } from '../type';
 
-interface Style {
-  hourglassWrapper: React.CSSProperties;
-  hourglassDiv: React.CSSProperties;
-}
 
-export interface HourglassProps extends BaseProps {
-  spinDirection?: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse' | '';
-  spinSpeed?: number;
-  margin?: string;
-}
-
-export const DEFAULT_VALUES = {
-  visible: true,
-  size: DEFAULT_SIZE,
-  color: DEFAULT_COLOR,
-  spinDirection: 'normal',
-  spinSpeed: 2,
-  margin: '',
-  ariaLabel: 'hourglass-loading-spinner',
-  className: '',
-  style: {},
-};
 
 const Hourglass = ({
-  visible = DEFAULT_VALUES.visible,
-  color = DEFAULT_VALUES.color,
-  size = DEFAULT_VALUES.size,
-  className = DEFAULT_VALUES.className,
-  ariaLabel = DEFAULT_VALUES.ariaLabel,
-  spinDirection = DEFAULT_VALUES.spinDirection as HourglassProps['spinDirection'],
-  spinSpeed = DEFAULT_VALUES.spinSpeed,
-  margin = DEFAULT_VALUES.margin,
-  style = DEFAULT_VALUES.style,
+  visible = HOURGLASS_DEFAULT_VALUES.visible,
+  color = HOURGLASS_DEFAULT_VALUES.color,
+  size = HOURGLASS_DEFAULT_VALUES.size,
+  className = HOURGLASS_DEFAULT_VALUES.className,
+  ariaLabel = HOURGLASS_DEFAULT_VALUES.ariaLabel,
+  spinDirection = HOURGLASS_DEFAULT_VALUES.spinDirection as HourglassProps['spinDirection'],
+  spinSpeed = HOURGLASS_DEFAULT_VALUES.spinSpeed,
+  style = HOURGLASS_DEFAULT_VALUES.style,
   ...rest
 }: HourglassProps) => {
   const speed = [0.8, 1, 1.2, 1.4, 1.6];
@@ -62,7 +40,7 @@ const Hourglass = ({
   }
 }
 `;
-  const styles: Style = {
+  const styles: HourglassStyles = {
     hourglassWrapper: {
       display: 'flex',
       alignItems: 'center',
@@ -73,7 +51,6 @@ const Hourglass = ({
     },
     hourglassDiv: {
       borderRadius: '50%',
-      margin: `${margin}`,
       border: `${size} solid ${color}`,
       borderColor: `${color} transparent ${color} transparent`,
       animation: `lds-hourglass ${speed[spinSpeed]}s infinite ${spinDirection}`,

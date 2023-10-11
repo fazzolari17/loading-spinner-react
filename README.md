@@ -8,7 +8,7 @@ npm i loading-spinner-react
 
 #### Import Spinner
 
-```JSX
+```jsx
 import { SimpleLoader } from '@loading-spinner-react';
 ```
 
@@ -18,17 +18,19 @@ import { SimpleLoader } from '@loading-spinner-react';
 <SimpleLoader >
 ```
 
+The documentation is currently in development and the website will be posted shortly.
+
 ### Manage Properties
 
-| Property name               | type       | Required | Default value | Comment                                                  |
-| --------------------------- | ---------- | -------- | ------------- | -------------------------------------------------------- | --------------------------------------- | --- |
+| Property name               | type       | Required | Default value |
+| --------------------------- | ---------- | -------- | ------------- | 
 | **size**                    | `string`   | `false`  | '30px'        | CSS length value for `height` and `width` of the spinner |
 | **color**                   | `string`   | `false`  | '#1976d2'     | CSS color values for the spinner                         |
 | **secondaryColor**          | `string`   | `false`  | '#cccccc'     | CSS color value for second half of the loader            |
 | **animationDuration**       | `string`   | `false`  | '2s'          | CSS `animation-duration`property value                   |
 | **animationTimingFunction** | `string`   | `false`  | 'ease-in-out' | CSS `animation-timing-function` property value           |
 | **animationDirection**      | `string`   | `false`  | 'normal'      | CSS `animation-direction` property value                 |
-| <!--                        | **styles** | `number` | `false`       | 2                                                        | number of spins during single animation | --> |
+|                        | **styles** | `number` | `false`       | 2                                                        | number of spins during single animation | --> |
 | **className**               | `string`   | `false`  |               | passes className to the wrapper container to             |
 
 <!-- <body>

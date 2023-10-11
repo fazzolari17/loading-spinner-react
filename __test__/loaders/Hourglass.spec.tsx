@@ -1,15 +1,18 @@
+import '@testing-library/jest-dom/';
+import '@testing-library/jest-dom/jest-globals';
+
 import React from 'react';
 import { Hourglass } from '../../src';
 import { render } from '@testing-library/react';
-import { DEFAULT_VALUES } from '../../src/loaders/Hourglass';
-import { DEFAULT_ARIA_ATTRIBUTES } from '../../src/type';
-import '@testing-library/jest-dom/';
-import '@testing-library/jest-dom/jest-globals';
+import { 
+  HOURGLASS_DEFAULT_VALUES, 
+  DEFAULT_ARIA_ATTRIBUTES 
+} from '../../src/type';
 
 describe('Hourglass loader', () => {
   it('should render to screen with default props', () => {
     const { getByLabelText } = render(<Hourglass />);
-    const loaderWrapper = getByLabelText(DEFAULT_VALUES.ariaLabel);
+    const loaderWrapper = getByLabelText(HOURGLASS_DEFAULT_VALUES.ariaLabel);
 
     expect(loaderWrapper).toBeInTheDocument();
 
@@ -21,14 +24,14 @@ describe('Hourglass loader', () => {
     );
     expect(loaderWrapper).toHaveAttribute(
       'aria-label',
-      DEFAULT_VALUES.ariaLabel
+      HOURGLASS_DEFAULT_VALUES.ariaLabel
     );
 
     // Default class
     expect(loaderWrapper).not.toHaveClass('');
 
     // Correct default styles are applied
-    expect(loaderWrapper.firstChild).toHaveStyle(`border: ${DEFAULT_VALUES.size} solid ${DEFAULT_VALUES.color}`);
+    expect(loaderWrapper.firstChild).toHaveStyle(`border: ${HOURGLASS_DEFAULT_VALUES.size} solid ${HOURGLASS_DEFAULT_VALUES.color}`);
     // Class
     expect(loaderWrapper).not.toHaveClass('');
   });
@@ -61,7 +64,7 @@ describe('Hourglass loader', () => {
     );
     expect(loaderWrapper).not.toHaveAttribute(
       'aria-label',
-      DEFAULT_VALUES.ariaLabel
+      HOURGLASS_DEFAULT_VALUES.ariaLabel
     );
     expect(loaderWrapper).toHaveAttribute(
       'aria-description',

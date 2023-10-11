@@ -1,15 +1,17 @@
-import React from 'react';
-import { Double } from '../../src';
-import { render } from '@testing-library/react';
-import { DEFAULT_VALUES } from '../../src/loaders/Double';
-import { DEFAULT_ARIA_ATTRIBUTES } from '../../src/type';
 import '@testing-library/jest-dom/';
 import '@testing-library/jest-dom/jest-globals';
+
+import React from 'react';
+import { render } from '@testing-library/react';
+import { Double } from '../../src';
+import { 
+  DOUBLE_DEFAULT_VALUES, 
+  DEFAULT_ARIA_ATTRIBUTES } from '../../src/type';
 
 describe('Double Loader', () => {
   it('should render to screen with default props', () => {
     const { getByLabelText } = render(<Double />);
-    const loaderContainer = getByLabelText(DEFAULT_VALUES.ariaLabel);
+    const loaderContainer = getByLabelText(DOUBLE_DEFAULT_VALUES.ariaLabel);
     const textElement = loaderContainer.children[4];
 
     expect(loaderContainer).toBeInTheDocument();
@@ -28,38 +30,38 @@ describe('Double Loader', () => {
     );
     expect(loaderContainer).toHaveAttribute(
       'aria-label',
-      DEFAULT_VALUES.ariaLabel
+      DOUBLE_DEFAULT_VALUES.ariaLabel
     );
 
     // Default class
     expect(loaderContainer).not.toHaveClass('');
 
     // Correct default styles are applied
-    expect(loaderContainer).toHaveStyle(`width: ${DEFAULT_VALUES.size}px`);
-    expect(loaderContainer).toHaveStyle(`height: ${DEFAULT_VALUES.size}px`);
+    expect(loaderContainer).toHaveStyle(`width: ${DOUBLE_DEFAULT_VALUES.size}px`);
+    expect(loaderContainer).toHaveStyle(`height: ${DOUBLE_DEFAULT_VALUES.size}px`);
 
     expect(loaderContainer.children[0]).toHaveStyle(
-      `border: ${DEFAULT_VALUES.spinnerSize} solid ${DEFAULT_VALUES.color[0]}`
+      `border: ${DOUBLE_DEFAULT_VALUES.spinnerSize} solid ${DOUBLE_DEFAULT_VALUES.color[0]}`
     );
     expect(loaderContainer.children[1]).toHaveStyle(
-      `border: ${DEFAULT_VALUES.spinnerSize} solid ${DEFAULT_VALUES.color[1]}`
+      `border: ${DOUBLE_DEFAULT_VALUES.spinnerSize} solid ${DOUBLE_DEFAULT_VALUES.color[1]}`
     );
     expect(loaderContainer.children[2]).toHaveStyle(
-      `border: ${DEFAULT_VALUES.spinnerSize} solid ${DEFAULT_VALUES.color[2]}`
+      `border: ${DOUBLE_DEFAULT_VALUES.spinnerSize} solid ${DOUBLE_DEFAULT_VALUES.color[2]}`
     );
     expect(loaderContainer.children[3]).toHaveStyle(
-      `border: ${DEFAULT_VALUES.spinnerSize} solid ${DEFAULT_VALUES.color[3]}`
+      `border: ${DOUBLE_DEFAULT_VALUES.spinnerSize} solid ${DOUBLE_DEFAULT_VALUES.color[3]}`
     );
     // Correct default text element styles applied
-    expect(textElement).toHaveStyle(`color: ${DEFAULT_VALUES.textColor}}`);
-    expect(textElement).toHaveStyle(`font-size: ${DEFAULT_VALUES.fontSize}}`);
+    expect(textElement).toHaveStyle(`color: ${DOUBLE_DEFAULT_VALUES.textColor}}`);
+    expect(textElement).toHaveStyle(`font-size: ${DOUBLE_DEFAULT_VALUES.fontSize}}`);
     expect(textElement).toHaveStyle(
-      `font-family: ${DEFAULT_VALUES.fontFamily}}`
+      `font-family: ${DOUBLE_DEFAULT_VALUES.fontFamily}}`
     );
     expect(textElement).toHaveStyle(
       `animation: ${'flash 2s ease-in-out infinite'}}`
     );
-    expect(textElement).toHaveTextContent(`${DEFAULT_VALUES.text}`);
+    expect(textElement).toHaveTextContent(`${DOUBLE_DEFAULT_VALUES.text}`);
   });
   it('should pass props to component', () => {
     const TEST_DEFAULTS = {

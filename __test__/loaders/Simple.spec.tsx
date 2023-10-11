@@ -1,10 +1,13 @@
-import React from 'react';
-import { Simple } from '../../src';
-import { render } from '@testing-library/react';
-import { DEFAULT_VALUES } from '../../src/loaders/Simple';
-import { DEFAULT_ARIA_ATTRIBUTES } from '../../src/type';
 import '@testing-library/jest-dom/';
 import '@testing-library/jest-dom/jest-globals';
+
+import React from 'react';
+import { render } from '@testing-library/react';
+import { Simple } from '../../src';
+import { 
+  SIMPLE_DEFAULT_VALUES, 
+  DEFAULT_ARIA_ATTRIBUTES 
+} from '../../src/type';
 
 describe('Simple Loader', () => {
   it('should render to screen with default props', () => {
@@ -28,20 +31,20 @@ describe('Simple Loader', () => {
     );
     expect(loaderContainer).toHaveAttribute(
       'aria-label',
-      DEFAULT_VALUES.ariaLabel
+      SIMPLE_DEFAULT_VALUES.ariaLabel
     );
 
     expect(loader).toHaveStyle(
-      `border: ${DEFAULT_VALUES.spinnerSize} solid ${DEFAULT_VALUES.color}`
+      `border: ${SIMPLE_DEFAULT_VALUES.spinnerSize} solid ${SIMPLE_DEFAULT_VALUES.color}`
     );
-    expect(loader).toHaveStyle(`height: ${DEFAULT_VALUES.size}`);
-    expect(loader).toHaveStyle(`width: ${DEFAULT_VALUES.size}`);
+    expect(loader).toHaveStyle(`height: ${SIMPLE_DEFAULT_VALUES.size}`);
+    expect(loader).toHaveStyle(`width: ${SIMPLE_DEFAULT_VALUES.size}`);
     // Check if smallSpinArc is true
     expect(loader).toHaveStyle(
-      `border-top: ${DEFAULT_VALUES.spinnerSize} solid transparent`
+      `border-top: ${SIMPLE_DEFAULT_VALUES.spinnerSize} solid transparent`
     );
     expect(loader).toHaveStyle(
-      `border-right: ${DEFAULT_VALUES.spinnerSize} solid transparent`
+      `border-right: ${SIMPLE_DEFAULT_VALUES.spinnerSize} solid transparent`
     );
   });
   it('component will display custom aria label instead of default if entered', () => {
@@ -51,7 +54,7 @@ describe('Simple Loader', () => {
     expect(loaderContainer).toHaveAttribute('aria-label', 'custom-aria-label');
     expect(loaderContainer).not.toHaveAttribute(
       'aria-label',
-      DEFAULT_VALUES.ariaLabel
+      SIMPLE_DEFAULT_VALUES.ariaLabel
     );
   });
   it('component will display custom color instead of default if entered', () => {
@@ -59,19 +62,19 @@ describe('Simple Loader', () => {
     const loaderContainer = getByTestId('simple-loader');
     const loader = loaderContainer.firstChild;
     expect(loader).toHaveStyle(
-      `border: ${DEFAULT_VALUES.spinnerSize} solid #000`
+      `border: ${SIMPLE_DEFAULT_VALUES.spinnerSize} solid #000`
     );
     expect(loader).not.toHaveStyle(
-      `border: ${DEFAULT_VALUES.spinnerSize} solid ${DEFAULT_VALUES.color}`
+      `border: ${SIMPLE_DEFAULT_VALUES.spinnerSize} solid ${SIMPLE_DEFAULT_VALUES.color}`
     );
   });
   it('component will display custom spinnerSize instead of default if entered', () => {
     const { getByTestId } = render(<Simple spinnerSize="8px" />);
     const loaderContainer = getByTestId('simple-loader');
     const loader = loaderContainer.firstChild;
-    expect(loader).toHaveStyle(`border: 8px solid ${DEFAULT_VALUES.color}`);
+    expect(loader).toHaveStyle(`border: 8px solid ${SIMPLE_DEFAULT_VALUES.color}`);
     expect(loader).not.toHaveStyle(
-      `border: ${DEFAULT_VALUES.spinnerSize} solid ${DEFAULT_VALUES.color}`
+      `border: ${SIMPLE_DEFAULT_VALUES.spinnerSize} solid ${SIMPLE_DEFAULT_VALUES.color}`
     );
   });
   it('component will display custom className', () => {
@@ -88,8 +91,8 @@ describe('Simple Loader', () => {
     expect(loader).toHaveStyle('height: 50px');
     expect(loader).toHaveStyle('width: 50px');
 
-    expect(loader).not.toHaveStyle(`height: ${DEFAULT_VALUES.size}`);
-    expect(loader).not.toHaveStyle(`width: ${DEFAULT_VALUES.size}`);
+    expect(loader).not.toHaveStyle(`height: ${SIMPLE_DEFAULT_VALUES.size}`);
+    expect(loader).not.toHaveStyle(`width: ${SIMPLE_DEFAULT_VALUES.size}`);
   });
   it('component will display changed spinner size when smallSpinnerArc is set to false', () => {
     const { getByTestId } = render(<Simple smallSpinArc={false} />);
@@ -97,10 +100,10 @@ describe('Simple Loader', () => {
     const loader = loaderContainer.firstChild;
 
     expect(loader).toHaveStyle(
-      `border-top: ${DEFAULT_VALUES.spinnerSize} solid transparent`
+      `border-top: ${SIMPLE_DEFAULT_VALUES.spinnerSize} solid transparent`
     );
     expect(loader).not.toHaveStyle(
-      `border-right: ${DEFAULT_VALUES.spinnerSize} solid transparent`
+      `border-right: ${SIMPLE_DEFAULT_VALUES.spinnerSize} solid transparent`
     );
   });
   it('animation defaults are overwritten when passed to component', () => {
@@ -120,9 +123,9 @@ describe('Simple Loader', () => {
       `animation: spin ${'0.7'}s ${'linear'} ${'1'} reverse`
     );
     expect(loader).not.toHaveStyle(
-      `animation: spin ${spinSpeedArray[DEFAULT_VALUES.spinSpeed]}s ${
-        DEFAULT_VALUES.easingFunction
-      } ${DEFAULT_VALUES.spinDuration} ${DEFAULT_VALUES.spinDirection}`
+      `animation: spin ${spinSpeedArray[SIMPLE_DEFAULT_VALUES.spinSpeed]}s ${
+        SIMPLE_DEFAULT_VALUES.easingFunction
+      } ${SIMPLE_DEFAULT_VALUES.spinDuration} ${SIMPLE_DEFAULT_VALUES.spinDirection}`
     );
   });
   it('additonal props will pass through', () => {
@@ -130,7 +133,7 @@ describe('Simple Loader', () => {
       ariaDescription: 'additional-props-will-pass-through'
     }
     const { getByLabelText } = render(<Simple aria-description={TEST_VALUES.ariaDescription} />);
-    expect(getByLabelText(DEFAULT_VALUES.ariaLabel)).toHaveAttribute('aria-description', TEST_VALUES.ariaDescription)
+    expect(getByLabelText(SIMPLE_DEFAULT_VALUES.ariaLabel)).toHaveAttribute('aria-description', TEST_VALUES.ariaDescription)
   });
   it('will not render when visible is set to false', () => {
     const { container } = render(<Simple visible={false} />);

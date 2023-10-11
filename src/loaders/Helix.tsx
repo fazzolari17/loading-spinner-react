@@ -1,45 +1,25 @@
 import React from 'react';
-import { BaseProps } from '../type';
+import { 
+  HelixProps,
+  HELIX_DEFAULT_VALUES, 
+  DEFAULT_ARIA_ATTRIBUTES 
+} from '../type';
 
-
-export const DEFAULT_WAI_ARIA_ATTRIBUTE = {
-  'aria-busy': true,
-  role: 'status',
-};
-
-export type Style = {
-  [key: string]: string;
-};
-
-interface HelixProps extends Omit<BaseProps & React.SVGProps<SVGSVGElement>, 'color'> {
-  primaryColor?: string[];
-  secondaryColor?: string[];
-  wrapperClass?: string;
-  wrapperStyle?: React.CSSProperties;
-}
-
-export const DEFAULT_VALUES = {
-  visible: true,
-  size: '80',
-  ariaLabel: 'helix-svg-loader',
-  primaryColor: ['#E90C5983', '#ff0033'],
-  secondaryColor: ['#46dff0', '#353A3925'],
-};
 
 const Helix = ({
   visible = true,
-  size = DEFAULT_VALUES.size,
-  wrapperClass = '',
-  wrapperStyle = {},
-  ariaLabel = DEFAULT_VALUES.ariaLabel,
-  primaryColor = DEFAULT_VALUES.primaryColor,
-  secondaryColor = DEFAULT_VALUES.secondaryColor,
+  size = HELIX_DEFAULT_VALUES.size,
+  className = '',
+  style = {},
+  ariaLabel = HELIX_DEFAULT_VALUES.ariaLabel,
+  primaryColor = HELIX_DEFAULT_VALUES.primaryColor,
+  secondaryColor = HELIX_DEFAULT_VALUES.secondaryColor,
   ...rest
 }: HelixProps) => {
   if (primaryColor.length === 1)
-    primaryColor = [primaryColor[0], DEFAULT_VALUES.primaryColor[1]];
+    primaryColor = [primaryColor[0], HELIX_DEFAULT_VALUES.primaryColor[1]];
   if (secondaryColor.length === 1)
-    secondaryColor = [secondaryColor[0], DEFAULT_VALUES.secondaryColor[1]];
+    secondaryColor = [secondaryColor[0], HELIX_DEFAULT_VALUES.secondaryColor[1]];
 
   return !visible ? null : (
     <svg
@@ -49,10 +29,10 @@ const Helix = ({
       height={size}
       viewBox="0 0 100 100"
       preserveAspectRatio="xMidYMid"
-      className={wrapperClass}
-      style={wrapperStyle}
+      className={className}
+      style={style}
       aria-label={ariaLabel}
-      {...DEFAULT_WAI_ARIA_ATTRIBUTE}
+      {...DEFAULT_ARIA_ATTRIBUTES}
       {...rest}
     >
       <circle
