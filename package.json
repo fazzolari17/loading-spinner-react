@@ -1,6 +1,6 @@
 {
   "name": "loading-spinner-react",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A collection of customizable react loding spinners.",
   "repository": "https://github.com/fazzolari17/loading-spinner-react.git",
   "main": "dist/index.js",
@@ -17,11 +17,11 @@
     "test": "jest"
   },
   "keywords": [
-    "react", 
-    "loader", 
-    "spinner", 
-    "loading spinner", 
-    "spin", 
+    "react",
+    "loader",
+    "spinner",
+    "loading spinner",
+    "spin",
     "react component",
     "component",
     "spinning"
@@ -64,7 +64,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "peerDependencies": {
-    "react": "^18.2.0 || ^17.0.0 || ^16.0.0 || ^15.0.0" ,
+    "react": "^18.2.0 || ^17.0.0 || ^16.0.0 || ^15.0.0",
     "react-dom": "^18.2.0 || ^17.0.0 || ^16.0.0 || ^15.0.0"
   },
   "types": "./dist/index.d.ts",
