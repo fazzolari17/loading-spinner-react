@@ -30,7 +30,7 @@ export const DEFAULT_VALUES = {
   text: 'LOADING...',
   textColor: '#D6E3F6',
   textAnimation: true,
-  displayText: true,
+  displayText: false,
   fontFamily: 'inherit',
   fontSize: '15px',
   spinnerSize: '4px',
@@ -142,7 +142,7 @@ const Advanced = ({
         {...rest}
       >
         <div style={{ ...styles.ldsRingDiv }}></div>
-        <span style={{ ...styles.text, ...flashingText }}>{innerText}</span>
+        <span style={{ ...styles.text, ...flashingText, zIndex: 10 }}>{innerText}</span>
         {spinDirectionDivArrangement}
       </div>
     </>
