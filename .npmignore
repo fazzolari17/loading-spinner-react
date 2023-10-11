@@ -1,0 +1,24 @@
+# Hidden Files
+.DS_Store
+.gitignore
+.eslintignore
+.eslintrc.json
+
+# Configuration Files
+tsconfig.json
+jest.config.js
+webpack.config.js
+.babelrc
+.prettierignore
+.prettier.json
+
+
+# Test
+test
+
+# Source Code 
+src
+
+# Development Files
+development
+node_modules
