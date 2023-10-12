@@ -13,7 +13,7 @@ const Simple = ({
   size = SIMPLE_DEFAULT_VALUES.size,
   color = SIMPLE_DEFAULT_VALUES.color,
   spinDirection = SIMPLE_DEFAULT_VALUES.spinDirection as SimpleLoaderProps['spinDirection'],
-  spinSpeed = SIMPLE_DEFAULT_VALUES.spinSpeed,
+  speed = SIMPLE_DEFAULT_VALUES.speed,
   spinDuration = SIMPLE_DEFAULT_VALUES.spinDuration,
   spinnerSize = SIMPLE_DEFAULT_VALUES.spinnerSize,
   smallSpinArc = SIMPLE_DEFAULT_VALUES.smallSpinArc,
@@ -23,7 +23,6 @@ const Simple = ({
   ariaLabel = SIMPLE_DEFAULT_VALUES.ariaLabel,
   ...rest
 }: SimpleLoaderProps): React.JSX.Element | null => {
-  const spinSpeedArray = [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
 
   const keyFrames = `
     @keyframes spin {
@@ -46,7 +45,7 @@ const Simple = ({
       borderRadius: '50%',
       width: `${size}`,
       height: `${size}`,
-      animation: `spin ${spinSpeedArray[spinSpeed]}s ${easingFunction} ${spinDuration} ${spinDirection}`,
+      animation: `spin ${speed}s ${easingFunction} ${spinDuration} ${spinDirection}`,
     },
     smallSpinArcSize: {
       borderTop: `${spinnerSize} solid transparent`,
@@ -66,7 +65,6 @@ const Simple = ({
       <style>{keyFrames}</style>
       <div
         style={styles.loaderContainer}
-        data-testid="simple-loader"
         aria-label={ariaLabel}
         {...DEFAULT_ARIA_ATTRIBUTES}
         {...rest}

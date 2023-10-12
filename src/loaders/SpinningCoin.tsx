@@ -12,14 +12,13 @@ const SpinningCoin = ({
   visible = SPINNINGCOIN_DEFAULT_VALUES.visible,
   size = SPINNINGCOIN_DEFAULT_VALUES.size,
   color = SPINNINGCOIN_DEFAULT_VALUES.color,
-  spinnerSpeed = SPINNINGCOIN_DEFAULT_VALUES.spinnerSpeed,
+  speed = SPINNINGCOIN_DEFAULT_VALUES.speed,
   spinDirection = SPINNINGCOIN_DEFAULT_VALUES.spinDirection as SpinningCoinProps['spinDirection'],
   className = SPINNINGCOIN_DEFAULT_VALUES.className,
   ariaLabel = SPINNINGCOIN_DEFAULT_VALUES.ariaLabel,
   styles,
   ...rest
 }: SpinningCoinProps) => {
-  const speed = [2.2, 2.4, 2.6];
 
   const keyframeAnimation = `
     @keyframes spin-coin {
@@ -54,7 +53,7 @@ const SpinningCoin = ({
       // margin: '8px',
       borderRadius: '50%',
       background: `${color}`,
-      animation: `spin-coin ${speed[spinnerSpeed]}s cubic-bezier(0, 0.2, 0.8, 1) infinite ${spinDirection}`,
+      animation: `spin-coin ${speed}s cubic-bezier(0, 0.2, 0.8, 1) infinite ${spinDirection}`,
     },
   };
 

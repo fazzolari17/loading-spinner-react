@@ -15,11 +15,10 @@ const Hourglass = ({
   className = HOURGLASS_DEFAULT_VALUES.className,
   ariaLabel = HOURGLASS_DEFAULT_VALUES.ariaLabel,
   spinDirection = HOURGLASS_DEFAULT_VALUES.spinDirection as HourglassProps['spinDirection'],
-  spinSpeed = HOURGLASS_DEFAULT_VALUES.spinSpeed,
+  speed = HOURGLASS_DEFAULT_VALUES.speed,
   style = HOURGLASS_DEFAULT_VALUES.style,
   ...rest
 }: HourglassProps) => {
-  const speed = [0.8, 1, 1.2, 1.4, 1.6];
 
   if(typeof size === 'number') {
     size = `${size}px`
@@ -53,7 +52,7 @@ const Hourglass = ({
       borderRadius: '50%',
       border: `${size} solid ${color}`,
       borderColor: `${color} transparent ${color} transparent`,
-      animation: `lds-hourglass ${speed[spinSpeed]}s infinite ${spinDirection}`,
+      animation: `lds-hourglass ${speed}s infinite ${spinDirection}`,
     },
   };
 

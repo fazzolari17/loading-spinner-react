@@ -12,7 +12,7 @@ import {
 const Double = ({
   visible = DOUBLE_DEFAULT_VALUES.visible,
   size = DOUBLE_DEFAULT_VALUES.size,
-  color = DOUBLE_DEFAULT_VALUES.color,
+  colors = DOUBLE_DEFAULT_VALUES.colors,
   text = DOUBLE_DEFAULT_VALUES.text,
   textColor = DOUBLE_DEFAULT_VALUES.textColor,
   textAnimation = DOUBLE_DEFAULT_VALUES.textAnimation,
@@ -74,7 +74,7 @@ const Double = ({
       height: `${number}${unit}`,
     },
     spin: {
-      border: `${spinnerSize} solid ${color[0]}`,
+      border: `${spinnerSize} solid ${colors[0]}`,
       width: `${number}${unit}`,
       height: `${number}${unit}`,
       boxSizing: 'border-box',
@@ -85,7 +85,7 @@ const Double = ({
       animation: 'rotate 2s cubic-bezier(0.26, 1.36, 0.74, -0.29) infinite',
     },
     loader2: {
-      border: `${spinnerSize} solid ${color[1]}`,
+      border: `${spinnerSize} solid ${colors[1]}`,
       width: `${number - (number * 0.1)}${unit}`,
       height: `${number - (number * 0.1)}${unit}`,
       animation:
@@ -93,14 +93,14 @@ const Double = ({
       zIndex: 1,
     },
     loader3: {
-      border: `${spinnerSize} solid ${color[2]}`,
+      border: `${spinnerSize} solid ${colors[2]}`,
       width: `${number - (number * 0.2)}${unit}`,
       height: `${number - (number * 0.2)}${unit}`,
       animation: 'rotate 2s cubic-bezier(0.26, 1.36, 0.74, -0.29) infinite',
       zIndex: 2,
     },
     loader4: {
-      border: `${spinnerSize} solid ${color[3]}`,
+      border: `${spinnerSize} solid ${colors[3]}`,
       width: `${number - (number * 0.3)}${unit}`,
       height: `${number - (number * 0.3)}${unit}`,
       animation:

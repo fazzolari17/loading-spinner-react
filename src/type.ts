@@ -58,7 +58,7 @@ export const ADVANCED_DEFAULT_VALUES = {
   spinnerSize: '4px',
   speed: 1.2,
   className: '',
-  ariaLabel: 'advanced-loading-spinner',
+  ariaLabel: 'advanced-loader',
   spinDirection: 'normal',
 };
 
@@ -77,7 +77,7 @@ export interface DoubleStyles {
 }
 
 export interface DoubleSpinnerProps extends Omit<BaseProps, 'color'> {
-  color?: string[] | undefined;
+  colors?: string[] | undefined;
   text?: string;
   textColor?: string;
   textAnimation?: boolean;
@@ -89,7 +89,7 @@ export interface DoubleSpinnerProps extends Omit<BaseProps, 'color'> {
 export const DOUBLE_DEFAULT_VALUES = {
   visible: true,
   size: 150,
-  color: ['#0D4B9F', '#E0EDFF', '#005CDC', '#94B6E5'],
+  colors: ['#0D4B9F', '#E0EDFF', '#005CDC', '#94B6E5'],
   text: 'LOADING...',
   textColor: '#D6E3F6',
   textAnimation: true,
@@ -97,7 +97,7 @@ export const DOUBLE_DEFAULT_VALUES = {
   fontFamily: 'inherit',
   fontSize: '15px',
   spinnerSize: '3px',
-  ariaLabel: 'double-spinner-loader',
+  ariaLabel: 'double-loader',
   className: '',
   style: {}
 };
@@ -134,7 +134,7 @@ export interface HourglassStyles {
 
 export interface HourglassProps extends BaseProps {
   spinDirection?: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse' | '';
-  spinSpeed?: number;
+  speed?: number;
 }
 
 export const HOURGLASS_DEFAULT_VALUES = {
@@ -142,8 +142,8 @@ export const HOURGLASS_DEFAULT_VALUES = {
   size: DEFAULT_SIZE,
   color: DEFAULT_COLOR,
   spinDirection: 'normal',
-  spinSpeed: 2,
-  ariaLabel: 'hourglass-loading-spinner',
+  speed: 1.2,
+  ariaLabel: 'hourglass-loader',
   className: '',
   style: {},
 };
@@ -156,7 +156,7 @@ export const HOURGLASS_DEFAULT_VALUES = {
 export interface SimpleLoaderProps extends BaseProps {
   spinDirection?: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse' | '';
   easingFunction?: 'ease-in-out' | 'linear' | 'ease' | string;
-  spinSpeed?: number;
+  speed?: number;
   spinDuration?: 'infinite' | string;
   smallSpinArc?: boolean;
 }
@@ -173,10 +173,10 @@ export const SIMPLE_DEFAULT_VALUES = {
   color: DEFAULT_COLOR,
   size: DEFAULT_SIZE,
   className: '',
-  ariaLabel: 'simple-loading-spinner',
+  ariaLabel: 'simple-loader',
   spinDirection: 'normal',
   easingFunction: 'linear',
-  spinSpeed: 1,
+  speed: 0.3,
   spinDuration: 'infinite',
   spinnerSize: '4px',
   smallSpinArc: true,
@@ -187,7 +187,7 @@ export const SIMPLE_DEFAULT_VALUES = {
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 export interface SpinningCoinProps extends Omit<BaseProps, 'spinnerSize'> {
-  spinnerSpeed?: number;
+  speed?: number;
   styles?: React.CSSProperties;
   className?: string;
   ariaLabel?: string;
@@ -204,7 +204,7 @@ export const SPINNINGCOIN_DEFAULT_VALUES = {
   size: '30px',
   color: '#1976d2',
   spinnerSize: '4px',
-  spinnerSpeed: 1,
+  speed: 2.4,
   className: '',
   ariaLabel: 'spinning-coin-loader',
   spinDirection: 'normal',
