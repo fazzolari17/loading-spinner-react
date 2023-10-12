@@ -1,6 +1,6 @@
 {
   "name": "loading-spinner-react",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A collection of customizable react loding spinners.",
   "repository": "https://github.com/fazzolari17/loading-spinner-react.git",
   "main": "dist/index.js",
