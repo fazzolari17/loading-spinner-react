@@ -16,14 +16,34 @@ describe('Project Test Coverage', () => {
     expect(loaderTestFiles.sort()).toEqual(testFiles);
   });
 
-  it('Should export all defined loader from index file', () => {
+  it('Should export all defined loader from index file as default export', () => {
     // This test also insure that fileName and loader name are in sync
     const loaderNames = Object.keys(Loaders);
+
     const loaderFiles: string[] = [];
     fs.readdirSync(LOADER_FOLDER).forEach((file: string) => {
       const testFileName = file.replace('.tsx', '');
       loaderFiles.push(testFileName);
     });
+
+    // Include the default export in the assertion
+    loaderFiles.push('default')
+
     expect(loaderNames.sort()).toEqual(loaderFiles.sort());
+
   });
+  
+  it('Should export default with all loaders from index file', () => {
+    // This test also insure that fileName and loader name are in sync
+    const defaultExport = Object.keys(Loaders.default);
+
+    const loaderFiles: string[] = [];
+    fs.readdirSync(LOADER_FOLDER).forEach((file: string) => {
+      const testFileName = file.replace('.tsx', '');
+      loaderFiles.push(testFileName);
+    });
+
+    expect(defaultExport.sort()).toEqual(loaderFiles.sort());
+  });
+
 });
