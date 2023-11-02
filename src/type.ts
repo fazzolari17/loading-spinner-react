@@ -18,6 +18,8 @@ export interface BaseProps extends Omit<HTMLProps<HTMLDivElement>, 'size'> {
   ariaLabel?: string;
 }
 
+export type SVGBaseProps = BaseProps & React.SVGProps<SVGSVGElement>
+
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // +++++++++++++++++++++++++++++ ADVANCED +++++++++++++++++++++++++++++++++++++
@@ -107,9 +109,8 @@ export const DOUBLE_DEFAULT_VALUES = {
 // +++++++++++++++++++++++++++++ HELIX +++++++++++++++++++++++++++++++++++++
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-export interface HelixProps extends Omit<BaseProps & React.SVGProps<SVGSVGElement>, 'color'> {
-  primaryColor?: string[];
-  secondaryColor?: string[];
+export interface HelixProps extends Omit<SVGBaseProps, 'color'> {
+  colors?: string[];
   className?: string;
   style?: React.CSSProperties;
 }
@@ -117,9 +118,8 @@ export interface HelixProps extends Omit<BaseProps & React.SVGProps<SVGSVGElemen
 export const HELIX_DEFAULT_VALUES = {
   visible: true,
   size: DEFAULT_SIZE,
-  ariaLabel: 'helix-svg-loader',
-  primaryColor: ['#E90C5983', '#ff0033'],
-  secondaryColor: ['#46dff0', '#353A3925'],
+  ariaLabel: 'helix-loader',
+  colors: ['#E90C5983', '#ff0033', '#46dff0', '#353A3925']
 };
 
 
@@ -132,15 +132,16 @@ export interface HourglassStyles {
   hourglassDiv: React.CSSProperties;
 }
 
-export interface HourglassProps extends BaseProps {
+export interface HourglassProps extends Omit<BaseProps, 'color'>{
   spinDirection?: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse' | '';
   speed?: number;
+  colors?: Array<string>;
 }
 
 export const HOURGLASS_DEFAULT_VALUES = {
   visible: true,
   size: DEFAULT_SIZE,
-  color: DEFAULT_COLOR,
+  colors: [DEFAULT_COLOR, DEFAULT_COLOR],
   spinDirection: 'normal',
   speed: 1.2,
   ariaLabel: 'hourglass-loader',
@@ -154,10 +155,8 @@ export const HOURGLASS_DEFAULT_VALUES = {
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 export interface SimpleLoaderProps extends BaseProps {
-  spinDirection?: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse' | '';
-  easingFunction?: 'ease-in-out' | 'linear' | 'ease' | string;
+  spinDirection?: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse' | '' | string;
   speed?: number;
-  spinDuration?: 'infinite' | string;
   smallSpinArc?: boolean;
 }
 
@@ -175,9 +174,7 @@ export const SIMPLE_DEFAULT_VALUES = {
   className: '',
   ariaLabel: 'simple-loader',
   spinDirection: 'normal',
-  easingFunction: 'linear',
   speed: 0.3,
-  spinDuration: 'infinite',
   spinnerSize: '4px',
   smallSpinArc: true,
 };
