@@ -9,9 +9,6 @@ import {
   DEFAULT_ARIA_ATTRIBUTES, 
 } from '../../src/type';
 
-// Global variables
-const speed = [2.2, 2.4, 2.6];
-
 describe('Spinning Coin Loader', () => {
   it('should render to screen with default props', () => {
     const { getByLabelText } = render(<SpinningCoin />);
@@ -46,7 +43,7 @@ describe('Spinning Coin Loader', () => {
 
     expect(loader).toHaveStyle(
       `animation: spin-coin ${
-        speed[SPINNINGCOIN_DEFAULT_VALUES.spinnerSpeed]
+        SPINNINGCOIN_DEFAULT_VALUES.speed
       }s cubic-bezier(0, 0.2, 0.8, 1) infinite ${SPINNINGCOIN_DEFAULT_VALUES.spinDirection}`
     );
   });
@@ -56,7 +53,7 @@ describe('Spinning Coin Loader', () => {
       size: '1rem',
       color: '#000',
       spinDirection: 'reverse' as 'reverse' | 'normal' | 'alternate' | 'alternate-reverse',
-      spinnerSpeed: 0,
+      speed: 0,
       ariaLabel: 'custom-aria-label',
       className: 'custom-class',
       ariaDescription: 'additional-props-will-pass-through'
@@ -66,7 +63,7 @@ describe('Spinning Coin Loader', () => {
         size={TEST_VALUES.size}
         color={TEST_VALUES.color}
         spinDirection={TEST_VALUES.spinDirection}
-        spinnerSpeed={TEST_VALUES.spinnerSpeed}
+        speed={TEST_VALUES.speed}
         ariaLabel={TEST_VALUES.ariaLabel}
         className={TEST_VALUES.className}
         aria-description={TEST_VALUES.ariaDescription}
@@ -92,7 +89,7 @@ describe('Spinning Coin Loader', () => {
 
     expect(loader).toHaveStyle(
       `animation: spin-coin ${
-        speed[0]
+        TEST_VALUES.speed
       }s cubic-bezier(0, 0.2, 0.8, 1) infinite ${'reverse'}`
     );
   });

@@ -11,8 +11,8 @@ import {
 
 describe('Simple Loader', () => {
   it('should render to screen with default props', () => {
-    const { getByTestId } = render(<Simple />);
-    const loaderContainer = getByTestId('simple-loader');
+    const { getByLabelText } = render(<Simple />);
+    const loaderContainer = getByLabelText(SIMPLE_DEFAULT_VALUES.ariaLabel);
     const loader = loaderContainer.firstChild;
 
     expect(loaderContainer).toBeInTheDocument();
@@ -48,8 +48,11 @@ describe('Simple Loader', () => {
     );
   });
   it('component will display custom aria label instead of default if entered', () => {
-    const { getByTestId } = render(<Simple ariaLabel="custom-aria-label" />);
-    const loaderContainer = getByTestId('simple-loader');
+    const TEST_VALUES = {
+      ariaLabel: "custom-aria-label" 
+    }
+    const { getByLabelText } = render(<Simple ariaLabel={TEST_VALUES.ariaLabel}/>);
+    const loaderContainer = getByLabelText(TEST_VALUES.ariaLabel);
 
     expect(loaderContainer).toHaveAttribute('aria-label', 'custom-aria-label');
     expect(loaderContainer).not.toHaveAttribute(
@@ -58,8 +61,8 @@ describe('Simple Loader', () => {
     );
   });
   it('component will display custom color instead of default if entered', () => {
-    const { getByTestId } = render(<Simple color="#000" />);
-    const loaderContainer = getByTestId('simple-loader');
+    const { getByLabelText } = render(<Simple color="#000" />);
+    const loaderContainer = getByLabelText(SIMPLE_DEFAULT_VALUES.ariaLabel);
     const loader = loaderContainer.firstChild;
     expect(loader).toHaveStyle(
       `border: ${SIMPLE_DEFAULT_VALUES.spinnerSize} solid #000`
@@ -69,8 +72,8 @@ describe('Simple Loader', () => {
     );
   });
   it('component will display custom spinnerSize instead of default if entered', () => {
-    const { getByTestId } = render(<Simple spinnerSize="8px" />);
-    const loaderContainer = getByTestId('simple-loader');
+    const { getByLabelText } = render(<Simple spinnerSize="8px" />);
+    const loaderContainer = getByLabelText(SIMPLE_DEFAULT_VALUES.ariaLabel);
     const loader = loaderContainer.firstChild;
     expect(loader).toHaveStyle(`border: 8px solid ${SIMPLE_DEFAULT_VALUES.color}`);
     expect(loader).not.toHaveStyle(
@@ -78,14 +81,14 @@ describe('Simple Loader', () => {
     );
   });
   it('component will display custom className', () => {
-    const { getByTestId } = render(<Simple className="custom-class" />);
-    const loaderContainer = getByTestId('simple-loader');
+    const { getByLabelText } = render(<Simple className="custom-class" />);
+    const loaderContainer = getByLabelText(SIMPLE_DEFAULT_VALUES.ariaLabel);
 
     expect(loaderContainer.firstChild).toHaveClass('custom-class');
   });
   it('component will display custom size when entered', () => {
-    const { getByTestId } = render(<Simple size="50px" />);
-    const loaderContainer = getByTestId('simple-loader');
+    const { getByLabelText } = render(<Simple size="50px" />);
+    const loaderContainer = getByLabelText(SIMPLE_DEFAULT_VALUES.ariaLabel);
     const loader = loaderContainer.firstChild;
 
     expect(loader).toHaveStyle('height: 50px');
@@ -95,8 +98,8 @@ describe('Simple Loader', () => {
     expect(loader).not.toHaveStyle(`width: ${SIMPLE_DEFAULT_VALUES.size}`);
   });
   it('component will display changed spinner size when smallSpinnerArc is set to false', () => {
-    const { getByTestId } = render(<Simple smallSpinArc={false} />);
-    const loaderContainer = getByTestId('simple-loader');
+    const { getByLabelText } = render(<Simple smallSpinArc={false} />);
+    const loaderContainer = getByLabelText(SIMPLE_DEFAULT_VALUES.ariaLabel);
     const loader = loaderContainer.firstChild;
 
     expect(loader).toHaveStyle(
@@ -107,25 +110,25 @@ describe('Simple Loader', () => {
     );
   });
   it('animation defaults are overwritten when passed to component', () => {
-    const { getByTestId } = render(
+    const TEST_VALUES = {
+      speed: 5,
+      spinDirection: "reverse",
+
+    }
+    const { getByLabelText } = render(
       <Simple
-        spinSpeed={5}
-        spinDirection="reverse"
-        easingFunction="linear"
-        spinDuration="1"
+        speed={TEST_VALUES.speed}
+        spinDirection={TEST_VALUES.spinDirection}
       />
     );
-    const spinSpeedArray = [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
-    const loaderContainer = getByTestId('simple-loader');
+    const loaderContainer = getByLabelText(SIMPLE_DEFAULT_VALUES.ariaLabel);
     const loader = loaderContainer.firstChild;
 
     expect(loader).toHaveStyle(
-      `animation: spin ${'0.7'}s ${'linear'} ${'1'} reverse`
+      `animation: spin ${TEST_VALUES.speed}s ease-in-out infinite ${TEST_VALUES.spinDirection}`
     );
     expect(loader).not.toHaveStyle(
-      `animation: spin ${spinSpeedArray[SIMPLE_DEFAULT_VALUES.spinSpeed]}s ${
-        SIMPLE_DEFAULT_VALUES.easingFunction
-      } ${SIMPLE_DEFAULT_VALUES.spinDuration} ${SIMPLE_DEFAULT_VALUES.spinDirection}`
+      `animation: spin ${SIMPLE_DEFAULT_VALUES.speed}s ease-in-out infinite ${SIMPLE_DEFAULT_VALUES.spinDirection}`
     );
   });
   it('additonal props will pass through', () => {

@@ -31,8 +31,8 @@ describe('Helix Svg loader', () => {
     expect(loaderWrapper).not.toHaveClass('');
 
     // Correct default styles are applied
-    expect(loaderWrapper).toHaveStyle(`width: ${HELIX_DEFAULT_VALUES.size}`);
-    expect(loaderWrapper).toHaveStyle(`height: ${HELIX_DEFAULT_VALUES.size}`);
+    expect(loaderWrapper).toHaveAttribute(`width`, `${HELIX_DEFAULT_VALUES.size}`);
+    expect(loaderWrapper).toHaveAttribute(`height`, `${HELIX_DEFAULT_VALUES.size}`);
     // Class
     expect(loaderWrapper).not.toHaveClass('');
   });
@@ -42,8 +42,7 @@ describe('Helix Svg loader', () => {
       className: 'test-wrapper-class',
       style: { background: 'red' },
       ariaLabel: 'test-aria-label',
-      primaryColor: ['red', 'orange'],
-      secondaryColor: ['blue', 'purple'],
+      colors: ['red', 'orange', 'blue', 'purple'],
       ariaDescription: 'test-additional-props-are-passed-through',
     };
     const { getByLabelText } = render(
@@ -52,8 +51,7 @@ describe('Helix Svg loader', () => {
         className={TEST_VALUES.className}
         style={TEST_VALUES.style}
         ariaLabel={TEST_VALUES.ariaLabel}
-        primaryColor={TEST_VALUES.primaryColor}
-        secondaryColor={TEST_VALUES.secondaryColor}
+        colors={TEST_VALUES.colors}
         aria-description={TEST_VALUES.ariaDescription}
       />
     );
