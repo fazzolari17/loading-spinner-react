@@ -13,3 +13,12 @@ export {
   Simple,
   SpinningCoin,
 };
+
+export default {
+  Advanced,
+  Double,
+  Helix,
+  Hourglass,
+  Simple,
+  SpinningCoin,
+};
