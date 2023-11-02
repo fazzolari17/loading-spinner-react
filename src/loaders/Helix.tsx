@@ -12,14 +12,23 @@ const Helix = ({
   className = '',
   style = {},
   ariaLabel = HELIX_DEFAULT_VALUES.ariaLabel,
-  primaryColor = HELIX_DEFAULT_VALUES.primaryColor,
-  secondaryColor = HELIX_DEFAULT_VALUES.secondaryColor,
+  colors = HELIX_DEFAULT_VALUES.colors,
   ...rest
 }: HelixProps) => {
-  if (primaryColor.length === 1)
-    primaryColor = [primaryColor[0], HELIX_DEFAULT_VALUES.primaryColor[1]];
-  if (secondaryColor.length === 1)
-    secondaryColor = [secondaryColor[0], HELIX_DEFAULT_VALUES.secondaryColor[1]];
+  let primaryColor = [HELIX_DEFAULT_VALUES.colors[0], HELIX_DEFAULT_VALUES.colors[1]];
+  let secondaryColor = [HELIX_DEFAULT_VALUES.colors[2], HELIX_DEFAULT_VALUES.colors[3]];
+
+if (colors.length === 1) {
+  primaryColor = [colors[0], HELIX_DEFAULT_VALUES.colors[1]]
+} else if (colors.length === 2) {
+  primaryColor = [colors[0], colors[1]]
+} else if (colors.length === 3) {
+  primaryColor = [colors[0], colors[1]]
+  secondaryColor = [colors[2], HELIX_DEFAULT_VALUES.colors[3]]
+} else if (colors.length === 4) {
+  primaryColor = [colors[0], colors[1]]
+  secondaryColor = [colors[2], colors[3]]
+}
 
   return !visible ? null : (
     <svg

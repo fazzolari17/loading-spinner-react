@@ -10,7 +10,7 @@ import {
 
 const Hourglass = ({
   visible = HOURGLASS_DEFAULT_VALUES.visible,
-  color = HOURGLASS_DEFAULT_VALUES.color,
+  colors = HOURGLASS_DEFAULT_VALUES.colors,
   size = HOURGLASS_DEFAULT_VALUES.size,
   className = HOURGLASS_DEFAULT_VALUES.className,
   ariaLabel = HOURGLASS_DEFAULT_VALUES.ariaLabel,
@@ -19,6 +19,10 @@ const Hourglass = ({
   style = HOURGLASS_DEFAULT_VALUES.style,
   ...rest
 }: HourglassProps) => {
+
+  if(colors.length < 2) {
+    colors = [colors[0], HOURGLASS_DEFAULT_VALUES.colors[1]]
+  }
 
   if(typeof size === 'number') {
     size = `${size}px`
@@ -50,8 +54,8 @@ const Hourglass = ({
     },
     hourglassDiv: {
       borderRadius: '50%',
-      border: `${size} solid ${color}`,
-      borderColor: `${color} transparent ${color} transparent`,
+      border: `${size} solid`,
+      borderColor: `${colors[0]} transparent ${colors[1]} transparent`,
       animation: `lds-hourglass ${speed}s infinite ${spinDirection}`,
     },
   };
